@@ -8,7 +8,6 @@
 
 class Sheet : public SheetInterface 
 {
-
 public:
     ~Sheet();
 
@@ -24,11 +23,14 @@ public:
     void PrintValues(std::ostream& output) const override;
     void PrintTexts(std::ostream& output) const override;
 
-	// Можете дополнить ваш класс нужными полями и методами
+    const Cell* GetConcreteCell(Position pos) const;
+    Cell* GetConcreteCell(Position pos);
 
 private:
-	// Можете дополнить ваш класс нужными полями и методами
-    //First int - height (row), second - width (col) 
+    void MaybeIncreaseSizeToIncludePosition(Position pos);
+    void PrintCells(std::ostream& output, const std::function<void(const CellInterface&)>& printCell) const;
+    Size GetActualSize() const;
+
     std::map<int, std::map<int, std::unique_ptr<Cell>>> data_;
     
     int width = 0, height = 0;
