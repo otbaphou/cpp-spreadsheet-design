@@ -32,6 +32,7 @@ private:
     Size GetActualSize() const;
 
     std::map<int, std::map<int, std::unique_ptr<Cell>>> data_;
+    std::unordered_map<Position, std::string> cache_;
     
     int width = 0, height = 0;
 };
