@@ -4,8 +4,11 @@
 #include "common.h"
 
 #include <functional>
+#include <map>
 
-class Sheet : public SheetInterface {
+class Sheet : public SheetInterface 
+{
+
 public:
     ~Sheet();
 
@@ -21,14 +24,12 @@ public:
     void PrintValues(std::ostream& output) const override;
     void PrintTexts(std::ostream& output) const override;
 
-    const Cell* GetConcreteCell(Position pos) const;
-    Cell* GetConcreteCell(Position pos);
+	// Можете дополнить ваш класс нужными полями и методами
 
 private:
-    void MaybeIncreaseSizeToIncludePosition(Position pos);
-    void PrintCells(std::ostream& output,
-                    const std::function<void(const CellInterface&)>& printCell) const;
-    Size GetActualSize() const;
-
-    std::vector<std::vector<std::unique_ptr<Cell>>> cells_;
+	// Можете дополнить ваш класс нужными полями и методами
+    //First int - height (row), second - width (col) 
+    std::map<int, std::map<int, std::unique_ptr<Cell>>> data_;
+    
+    int width = 0, height = 0;
 };
