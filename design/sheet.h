@@ -33,6 +33,7 @@ private:
 
     std::map<int, std::map<int, std::unique_ptr<Cell>>> data_;
     std::unordered_map<Position, std::string> cache_;
+    std::unordered_map<Position, std::vector<Position>> dependencies_;
     
     int width = 0, height = 0;
 };
